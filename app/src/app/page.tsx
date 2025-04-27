@@ -21,8 +21,7 @@ export default function Home() {
     const connection = new web3.Connection(process.env.NEXT_PUBLIC_RPC_URL!); // Replace with your RPC URL if needed
     const provider = new AnchorProvider(
       connection,
-      // @ts-ignore
-      wallet,
+      wallet?.adapter as any,
       AnchorProvider.defaultOptions()
     );
 
@@ -47,8 +46,7 @@ export default function Home() {
     const connection = new web3.Connection(process.env.NEXT_PUBLIC_RPC_URL!); // Replace with your RPC URL if needed
     const provider = new AnchorProvider(
       connection,
-      // @ts-ignore
-      wallet.adapter,
+      wallet.adapter as any,
       AnchorProvider.defaultOptions()
     );
     const program = new Program<AnchorCounter>(idl as any, provider);
